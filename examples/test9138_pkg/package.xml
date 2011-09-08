@@ -1,0 +1,47 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.1"
+         id="test9138_pkg"
+         name="test9138_pkg"
+         developer="xTuple"
+         updater="2.2.0WIP" >
+ <pkgnotes>
+   This is a test to see if all of the known elements can be loaded into
+   the update schema with their native tags, rather than requiring
+   special data dumps.
+ </pkgnotes>
+
+ <initscript     file="test9138_script.sql"   />
+ <finalscript    file="test9138_finalize.sql" />
+ <loadmetasql    file="test9138_update_metasql.mql"  schema="public" />
+ <loadreport     file="test9138_update_report.xml"   schema="public" />
+ <createtable    file="test9138_update_table.sql"    schema="public" name="test9138_public_table"    />
+ <createfunction file="test9138_update_function.sql" schema="public" name="test9138_public_function" />
+ <createtrigger  file="test9138_update_trigger.sql"  schema="public" name="test9138_public_trigger"  />
+ <createview     file="test9138_update_view.sql"     schema="public" name="test9138_public_view"     />
+ <loadappscript  file="test9138_update.js"           schema="public" name="test9138_public"   />
+ <loadimage      file="test9138_update_image.png"    schema="public" name="test9138_public_image"    />
+ <loadappui      file="test9138_update.ui"   schema="public" enabled="t"     />
+ <loadpriv       name="test9138_public_priv" schema="public" module="Custom" />
+ <loadcmd        name="test9138_public_cmd"      title="test public command"
+                 privname="test9138_public_priv" module="System"
+                 schema="public"                 executable="!customuiform">
+    <arg value="uiform=test9138_public_ui" />
+ </loadcmd>
+
+ <loadmetasql    file="test9138_alternate_metasql.mql"  />
+ <loadreport     file="test9138_alternate_report.xml"   />
+ <createtable    file="test9138_alternate_table.sql"    name="test9138_pkg_table"    />
+ <createfunction file="test9138_alternate_function.sql" name="test9138_pkg_function" />
+ <createtrigger  file="test9138_alternate_trigger.sql"  name="test9138_pkg_trigger"  />
+ <createview     file="test9138_alternate_view.sql"     name="test9138_pkg_view"     />
+ <loadappscript  file="test9138_alternate.js"           name="test9138_pkg"          />
+ <loadimage      file="test9138_alternate_image.png" name="test9138_pkg_image"/>
+ <loadappui      file="test9138_alternate.ui"        enabled="t"              />
+ <loadpriv       name="test9138_pkg_priv"     module="Custom"          />
+ <loadcmd        name="test9138_pkg_cmd"      title="test 9138 pkg command"
+                 privname="test9138_pkg_priv" module="System"
+                 executable="!customuiform">
+    <arg value="uiform=test9138_pkg_ui" />
+ </loadcmd>
+
+</package>

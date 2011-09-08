@@ -1,0 +1,62 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.1"
+         id="allknownelemspkg"
+         name="telephonelookup"
+         developer="xTuple"
+         descrip="Reverse Telephone Directory Lookup"
+         updater="2.0.0rc">
+  <pkgnotes>
+    This is a simple test of the packaging functionality in xTuple ERP's
+    Updater utility.
+  </pkgnotes>
+  <pkgnotes>
+    Just in case someone makes a mistake, what happens if someone adds a second
+    set of package notes?
+  </pkgnotes>
+
+ <prerequisite type="Query" name="Checking SQL DB Server" >
+  <query>SELECT metric_value IN ('Manufacturing', 'PostBooks', 'Standard')
+         FROM metric
+         WHERE metric_name = 'Application';</query>
+  <message>
+    This package requires that it be applied against an xTuple ERP database.
+  </message>
+ </prerequisite>
+
+ <prerequisite type="license" name="sampleLicense" >
+   <message>
+     &lt;p>This is the content of a &lt;i>rich text&lt;/i> license.
+     &lt;hr/>
+     You must either accept or not.&lt;/p>
+   </message>
+ </prerequisite>
+
+ <script         file="initUpgrade" onerror="Ignore" />
+ <finalscript    file="finalize.sql" />
+ <createtable    file="pkgtest.sql" name="pkgtest" onerror="Ignore" />
+ <createtable    file="pkgtestitem.sql" name="pkgtestitem" onerror="Ignore" />
+ <createfunction file="pkgtesttriggerfunction.sql" name="_pkgtestbefore" />
+ <createfunction file="dropifexists.sql" name="dropifexists" />
+ <createtrigger  file="pkgtesttrigger.sql" name="pkgtestbefore" />
+ <createview     file="pkgtestview.sql" name="pkgtestview" />
+ <loadmetasql    file="telephonelookup.mql" grade="10" >
+  comment on metasql
+ </loadmetasql>
+ <loadreport     grade="0" file="telephonelookup.xml" />
+ <loadappscript  order="0" file="telephonelookup.script" name="TelephoneLookup"/>
+ <loadappui      order="0" file="telephonelookup.ui" enabled="t" />
+ <loadimage      name="Telephone" file="telephone.png">
+   This is a comment on the telephone image
+ </loadimage>
+ <loadimage     name="Telephone_alt" file="telephone_ascii.jpg" />
+ <loadpriv      name="CustomTelephoneLookup" module="Custom">
+   Allowed to use the Telephone Lookup Package
+ </loadpriv>
+ <loadcmd       name="TelephoneLookup" title="Reverse Directory Lookup"
+                privname="TelephoneLookup" module="CRM"
+                executable="!customuiform">
+    Telephone Lookup Custom Command Description
+    <arg value="uiform=TelephoneLookup"/>
+    <arg value="IgnoredArg"/>
+  </loadcmd>
+</package>

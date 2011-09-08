@@ -1,0 +1,38 @@
+<!DOCTYPE packageManagerDev>
+<package version="1.0"
+         id="duplicates"
+         name="duplicateCheck"
+         developer="xTuple"
+         descrip="Check for errors creating dups"
+         updater="2.0.0beta3">
+  <pkgnotes>
+    This tests for triggers catching attempts to create duplicate objects.
+    The test should report errors and ignore them, then ask the user if s/he
+    really wants to commit the package.
+  </pkgnotes>
+  <loadimage    name="YTRUCK1" file="loadimage.png" onerror="Ignore" >
+    Should fail because there's a YTRUCK1 in the demo db.
+  </loadimage>
+  <loadreport    grade="0" file="loadreport.xml" onerror="Ignore" >
+    Should fail because there's already an APCheck in the database.
+  </loadreport>
+  <loadappscript order="0" file="sampledisplay.script" name="SampleDisplay" onerror="Ignore" >
+    Should fail because there's a sampledisplay script in the demo database.
+  </loadappscript>
+  <loadappui     order="0" file="sampledisplay.ui" enabled="t" onerror="Ignore" >
+    Should fail because there's a sampledisplay form in the demo database.
+  </loadappui>
+  <loadmetasql  file="loadmetasql.mql" onerror="Ignore" >
+    Should fail because there's already an
+    enterPoReceipt-poItemReceivingsFillList in the database.
+  </loadmetasql>
+  <loadpriv     name="ViewPackages" module="System" onerror="Ignore" >
+    Should fail because there's already a ViewPackages priv in the database.
+  </loadpriv>
+  <loadcmd      name=""     title="Sample Display"
+                privname="" module="Sales"
+                executable="!customuiform" onerror="Ignore" >
+    Should fail because there's already a cmd with this name.
+    <arg value="uiform=SampleDisplay"/>
+  </loadcmd>
+</package>

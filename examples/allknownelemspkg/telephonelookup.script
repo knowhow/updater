@@ -1,0 +1,48 @@
+function getParams()
+{
+  var params = new Object;
+  params.search = mywindow.findChild("_search").text;
+  return params;
+}
+
+function query()
+{
+  var metasqlqry = toolbox.executeQuery("SELECT metasql_query "
+                                      + "FROM metasql "
+                                      + "WHERE ((metasql_group='telephonelookup')"
+                                      + "  AND  (metasql_name='detail'));",
+                                      new Object);
+  if (! metasqlqry.first())
+  {
+    toolbox.messageBox("critical", mywindow, "Could Not Find Query",
+                       "Could not find the MetaSQL statement for this screen.");
+    return;
+  }
+
+  var qry = toolbox.executeQuery(metasqlqry.value("metasql_query"),
+                                 getParams());
+  if(!qry.first())
+  {
+    mywindow.findChild("_firstname").text = "n/a";
+    mywindow.findChild("_lastname").text = "n/a";
+    mywindow.findChild("_number").text = "n/a";
+    mywindow.findChild("_alternate").text = "n/a";
+
+    toolbox.messageBox("warning", mywindow, "No Results", "No results were found matching your criteria.");
+    return;
+  }
+
+  mywindow.findChild("_firstname").text = qry.value("cntct_first_name");
+  mywindow.findChild("_lastname").text = qry.value("cntct_last_name");
+  mywindow.findChild("_number").text = qry.value("cntct_phone");
+  mywindow.findChild("_alternate").text = qry.value("cntct_phone2");
+}
+
+function print()
+{
+  toolbox.printReport("TelephoneLookup", getParams());
+}
+
+mywindow.findChild("_close").clicked.connect(mywindow, "close");
+mywindow.findChild("_query").clicked.connect(query);
+mywindow.findChild("_print").clicked.connect(print);

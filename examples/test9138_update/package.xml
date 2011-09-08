@@ -1,0 +1,46 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.1"
+         id="test9138_update"
+         developer="xTuple"
+         updater="2.2.0WIP" >
+ <pkgnotes>
+   This is a test to see if all of the known elements can be loaded into
+   the update schema with their native tags, rather than requiring
+   special data dumps.
+ </pkgnotes>
+
+ <initscript     file="test9138_script.sql"   />
+ <finalscript    file="test9138_finalize.sql" />
+ <loadmetasql    file="test9138_update_metasql.mql"  />
+ <loadreport     file="test9138_update_report.xml"   />
+ <createtable    file="test9138_update_table.sql"    name="test9138_table"    />
+ <createfunction file="test9138_update_function.sql" name="test9138_function" />
+ <createtrigger  file="test9138_update_trigger.sql"  name="test9138_trigger"  />
+ <createview     file="test9138_update_view.sql"     name="test9138_view"     />
+ <loadappscript  file="test9138_update.js"           name="test9138"          />
+ <loadimage      file="test9138_update_image.png"    name="test9138_image"    />
+ <loadappui      file="test9138_update.ui"           enabled="t"              />
+ <loadpriv       name="test9138_update_priv"         module="Custom"          />
+ <loadcmd        name="test9138_update_cmd"      title="test bug 9138_update command"
+                 privname="test9138_update_priv" module="System"
+                 executable="!customuiform">
+    <arg value="uiform=test9138_update_ui" />
+ </loadcmd>
+
+ <loadmetasql    file="test9138_alternate_metasql.mql"  schema="alternate" />
+ <loadreport     file="test9138_alternate_report.xml"   schema="alternate" />
+ <createtable    file="test9138_alternate_table.sql"    schema="alternate" name="test9138_alternate_table"    />
+ <createfunction file="test9138_alternate_function.sql" schema="alternate" name="test9138_alternate_function" />
+ <createtrigger  file="test9138_alternate_trigger.sql"  schema="alternate" name="test9138_alternate_trigger"  />
+ <createview     file="test9138_alternate_view.sql"     schema="alternate" name="test9138_alternate_view"     />
+ <loadappscript  file="test9138_alternate.js"           schema="alternate" name="test9138_alternate"          />
+ <loadimage      file="test9138_alternate_image.png"    schema="alternate" name="test9138_alternate_image"    />
+ <loadappui      file="test9138_alternate.ui"           schema="alternate" enabled="t"              />
+ <loadpriv       name="test9138_alternate_priv"         schema="alternate" module="Custom"          />
+ <loadcmd        name="test9138_alternate_cmd"      title="test bug 9138_alternate command"
+                 privname="test9138_alternate_priv" module="System"
+                 schema="alternate"                 executable="!customuiform">
+    <arg value="uiform=test9138_alternate_ui" />
+ </loadcmd>
+
+</package>

@@ -1,0 +1,6 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.0" id="missingfiletest" >
+
+ <script name="initUpgrade" onerror="Ignore" />
+
+</package>

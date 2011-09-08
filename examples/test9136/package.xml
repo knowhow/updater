@@ -1,0 +1,29 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.1"
+         id="test9136"
+         developer="xTuple"
+         updater="2.2.0WIP" >
+ <pkgnotes>
+   This is a test to see if all of the known elements can be loaded into
+   the public schema with their native tags, rather than requiring
+   special data dumps.
+ </pkgnotes>
+
+ <script         file="test9136_script.sql"   />
+ <finalscript    file="test9136_finalize.sql" />
+ <loadmetasql    file="test9136_metasql.mql"  />
+ <loadreport     file="test9136_report.xml"   />
+ <createtable    file="test9136_table.sql"    name="test9136_table"    />
+ <createfunction file="test9136_function.sql" name="test9136_function" />
+ <createtrigger  file="test9136_trigger.sql"  name="test9136_trigger"  />
+ <createview     file="test9136_view.sql"     name="test9136_view"     />
+ <loadappscript  file="test9136.js"           name="test9136"          />
+ <loadimage      file="test9136_image.png"    name="test9136_image"    />
+ <loadappui      file="test9136.ui"           enabled="t"              />
+ <loadpriv       name="test9136_priv"         module="Custom"          />
+ <loadcmd        name="test9136_cmd"      title="test bug 9136 command"
+                 privname="test9136_priv" module="System"
+                 executable="!customuiform">
+    <arg value="uiform=test9136_ui" />
+ </loadcmd>
+</package>

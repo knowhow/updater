@@ -1,0 +1,6 @@
+SELECT dropIfExists('TABLE', 'test9136_table');
+CREATE TABLE test9136_table (a INTEGER PRIMARY KEY, b INTEGER, c INTEGER);
+
+REVOKE ALL ON TABLE test9136_table FROM PUBLIC;
+GRANT  ALL ON TABLE test9136_table TO   admin;
+GRANT  ALL ON TABLE test9136_table TO   GROUP openmfg;

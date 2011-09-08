@@ -1,0 +1,19 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.0" id="221to230" >
+ <prerequisite type="Query" name="Checking SQL database server" >
+  <query>SELECT TRUE;</query>
+  <message>This package must be run against a(n) SQL database.</message>
+ </prerequisite>
+
+ <script name="initUpgrade" onerror="Ignore" />
+ <loadreport grade="0" name="ReportDefinitions/AccountNumberMasterList.xml" />
+ <loadappscript grade="0" name="sampleAppScript.js" />
+ <loadappui     grade="0" name="sampleUI.ui" />
+ <unknown1 />
+ <unknown2 />
+ <unknown1 /> 
+ <unknown3 />
+ <unknown2 />
+ <unknown1 />
+
+</package>

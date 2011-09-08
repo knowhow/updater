@@ -1,0 +1,1 @@
+SELECT setMetric('SamplePackage', 'installed');

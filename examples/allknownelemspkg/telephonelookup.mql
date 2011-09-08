@@ -1,0 +1,9 @@
+--group: telephonelookup
+--name:  detail
+--notes: this is a sample metasql statement
+--       with a two line comment
+SELECT cntct_first_name, cntct_last_name,
+       cntct_phone, cntct_phone2
+  FROM cntct
+ WHERE((cntct_phone ~ <? value("search") ?>)
+    OR (cntct_phone2 ~ <? value("search") ?>));

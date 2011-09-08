@@ -1,0 +1,41 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.1"
+         id="allknownelemspkg"
+         name="telephonelookup"
+         descrip="Reverse Telephone Directory Lookup">
+  <pkgnotes>
+    This is a simple test of the packaging functionality in xTuple ERP's
+    Updater utility.
+  </pkgnotes>
+  <pkgnotes>
+    Just in case someone makes a mistake, what happens if someone adds a second
+    set of package notes?
+  </pkgnotes>
+
+ <prerequisite type="Query" name="Checking SQL DB Server" >
+  <query>SELECT metric_value = 'OpenMFG' OR metric_value = 'PostBooks'
+         FROM metric
+         WHERE metric_name = 'Application';</query>
+  <message>
+    This package requires that it be applied against an xTuple ERP database.
+  </message>
+ </prerequisite>
+
+ <script        file="initUpgrade" onerror="Ignore" />
+ <loadreport    grade="0" file="telephonelookup.xml" />
+ <loadappscript order="0" file="telephonelookup.script" name="TelephoneLookup" grade="7" enabled="neither"/>
+ <loadappui     order="0" file="telephonelookup.ui" enabled="x" grade="aa" />
+ <loadimage     name="Telephone" file="telephone.png" grade="x" order="y" enabled="z">
+   This is a comment on the telephone image
+ </loadimage>
+ <loadpriv      name="TelephoneLookup">
+   Allowed to use the Telephone Lookup Package
+ </loadpriv>
+ <loadcmd       name="TelephoneLookup" title="Reverse Directory Lookup"
+                privname="TelephoneLookup" module="CRM" grade="5"
+                system="neither" executable="!customuiform">
+    Telephone Lookup Custom Command Description
+    <arg value="uiform=TelephoneLookup"/>
+    <arg />
+  </loadcmd>
+</package>

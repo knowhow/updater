@@ -1,0 +1,6 @@
+--group: test9138_alternate
+--name:  detail
+--notes: this is a sample metasql statement
+--       with a two line comment
+SELECT a, b, c, random() AS d
+  FROM alternate.test9138_alternate_table;

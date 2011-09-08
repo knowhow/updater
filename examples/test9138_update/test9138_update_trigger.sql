@@ -1,0 +1,4 @@
+SELECT dropIfExists('TRIGGER', 'test9138_trigger');
+CREATE TRIGGER test9138_trigger
+BEFORE INSERT OR UPDATE ON test9138_table FOR EACH ROW
+  EXECUTE PROCEDURE test9138_function();

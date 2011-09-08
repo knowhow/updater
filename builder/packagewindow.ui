@@ -1,0 +1,1320 @@
+<ui version="4.0" >
+ <comment>This file is part of the xTuple ERP: PostBooks Edition, a free and
+open source Enterprise Resource Planning software suite,
+Copyright (c) 1999-2010 by OpenMFG LLC, d/b/a xTuple.
+It is licensed to you under the Common Public Attribution License
+version 1.0, the full text of which (including xTuple-specific Exhibits)
+is available at www.xtuple.com/CPAL.  By using this software, you agree
+to be bound by its terms.</comment>
+ <class>PackageWindow</class>
+ <widget class="Q3MainWindow" name="PackageWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>483</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Package Manager</string>
+  </property>
+  <widget class="QWidget" name="widget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>45</y>
+     <width>600</width>
+     <height>438</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" >
+    <item>
+     <widget class="QTabWidget" name="_tabs" >
+      <property name="tabShape" >
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>Prerequisites</string>
+       </attribute>
+       <layout class="QHBoxLayout" >
+        <item>
+         <layout class="QVBoxLayout" >
+          <item>
+           <widget class="Q3ListBox" name="_prereqs" />
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QPushButton" name="_addPrereq" >
+              <property name="toolTip" >
+               <string comment="toolTip comment" >Add a new prerequisite to this package.</string>
+              </property>
+              <property name="whatsThis" >
+               <string comment="whatsThis comment" >whatsThis</string>
+              </property>
+              <property name="text" >
+               <string>Add</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>16</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_raisePrereq" >
+              <property name="toolTip" >
+               <string>Change the order of the prerequisites by moving the selected item up in the list.</string>
+              </property>
+              <property name="text" >
+               <string/>
+              </property>
+              <property name="icon" >
+               <iconset/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_lowerPrereq" >
+              <property name="toolTip" >
+               <string>Change the order of the prerequisites by moving the selected item down in the list.</string>
+              </property>
+              <property name="text" >
+               <string/>
+              </property>
+              <property name="icon" >
+               <iconset/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>16</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_removePrereq" >
+              <property name="toolTip" >
+               <string>Remove a selected prerequisite from the list.</string>
+              </property>
+              <property name="text" >
+               <string>Remove</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" >
+          <item>
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QLabel" name="_typeLabel" >
+              <property name="text" >
+               <string>Type:</string>
+              </property>
+              <property name="alignment" >
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              </property>
+              <property name="wordWrap" >
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="_type" >
+              <property name="text" >
+               <string>_type</string>
+              </property>
+              <property name="wordWrap" >
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_editConditions" >
+              <property name="text" >
+               <string>Edit Conditions</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Q3GroupBox" name="_gbPrereqMessage" >
+            <property name="title" >
+             <string>Message</string>
+            </property>
+            <layout class="QVBoxLayout" >
+             <item>
+              <widget class="Q3TextEdit" name="_prereqMessage" />
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <item>
+                <spacer>
+                 <property name="orientation" >
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType" >
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" >
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="_editPrereqMessage" >
+                 <property name="text" >
+                  <string>Edit</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="Q3GroupBox" name="_gbProviders" >
+            <property name="title" >
+             <string>Providers</string>
+            </property>
+            <layout class="QHBoxLayout" >
+             <item>
+              <widget class="Q3ListBox" name="_providers" />
+             </item>
+             <item>
+              <layout class="QVBoxLayout" >
+               <item>
+                <widget class="QPushButton" name="_addProvider" >
+                 <property name="text" >
+                  <string>Add</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="_editProvider" >
+                 <property name="text" >
+                  <string>Edit</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="_removeProvider" >
+                 <property name="text" >
+                  <string>Remove</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer>
+                 <property name="orientation" >
+                  <enum>Qt::Vertical</enum>
+                 </property>
+                 <property name="sizeType" >
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" >
+                  <size>
+                   <width>20</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab" >
+       <attribute name="title" >
+        <string>Scripts</string>
+       </attribute>
+       <layout class="QHBoxLayout" >
+        <item>
+         <layout class="QVBoxLayout" >
+          <item>
+           <widget class="Q3ListBox" name="_scripts" />
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QPushButton" name="_addScript" >
+              <property name="text" >
+               <string>Add</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>16</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_raiseScript" >
+              <property name="text" >
+               <string/>
+              </property>
+              <property name="icon" >
+               <iconset/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_lowerScript" >
+              <property name="text" >
+               <string/>
+              </property>
+              <property name="icon" >
+               <iconset/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>16</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_removeScript" >
+              <property name="text" >
+               <string>Remove</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" >
+          <item>
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QLabel" name="_onErrorLabel" >
+              <property name="text" >
+               <string>Action on error:</string>
+              </property>
+              <property name="wordWrap" >
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="_onError" />
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Q3GroupBox" name="_gbScriptMessage" >
+            <property name="title" >
+             <string>Message</string>
+            </property>
+            <layout class="QVBoxLayout" >
+             <item>
+              <widget class="Q3TextEdit" name="_scriptMessage" />
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <item>
+                <spacer>
+                 <property name="orientation" >
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType" >
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" >
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="_editScriptMessage" >
+                 <property name="text" >
+                  <string>Edit</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="TabPage" >
+       <attribute name="title" >
+        <string>Reports</string>
+       </attribute>
+       <layout class="QHBoxLayout" >
+        <item>
+         <layout class="QVBoxLayout" >
+          <item>
+           <widget class="Q3ListBox" name="_reports" />
+          </item>
+          <item>
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QPushButton" name="_addReport" >
+              <property name="text" >
+               <string>Add</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QPushButton" name="_removeReport" >
+              <property name="text" >
+               <string>Remove</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" >
+          <item>
+           <layout class="QHBoxLayout" >
+            <item>
+             <widget class="QLabel" name="_gradeLabel" >
+              <property name="text" >
+               <string>Grade:</string>
+              </property>
+              <property name="wordWrap" >
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="_grade" />
+            </item>
+            <item>
+             <spacer>
+              <property name="orientation" >
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeType" >
+               <enum>QSizePolicy::Expanding</enum>
+              </property>
+              <property name="sizeHint" >
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="Q3GroupBox" name="_gbReportMessage" >
+            <property name="title" >
+             <string>Message</string>
+            </property>
+            <layout class="QVBoxLayout" >
+             <item>
+              <widget class="Q3TextEdit" name="_reportMessage" />
+             </item>
+             <item>
+              <layout class="QHBoxLayout" >
+               <item>
+                <spacer>
+                 <property name="orientation" >
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType" >
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" >
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="_editReportMessage" >
+                 <property name="text" >
+                  <string>Edit</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="Q3ToolBar" name="toolBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="label" >
+    <string>Tools</string>
+   </property>
+   <addaction name="fileNewAction" />
+   <addaction name="fileOpenAction" />
+   <addaction name="fileSaveAction" />
+  </widget>
+  <widget class="QMenuBar" name="MenuBar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>600</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="fileMenu" >
+    <property name="title" >
+     <string>&amp;File</string>
+    </property>
+    <addaction name="fileNewAction" />
+    <addaction name="fileOpenAction" />
+    <addaction name="fileSaveAction" />
+    <addaction name="fileSaveAsAction" />
+    <addaction name="separator" />
+    <addaction name="fileExitAction" />
+   </widget>
+   <widget class="QMenu" name="helpMenu" >
+    <property name="title" >
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="helpContentsAction" />
+    <addaction name="helpIndexAction" />
+    <addaction name="separator" />
+    <addaction name="helpAboutAction" />
+   </widget>
+   <addaction name="fileMenu" />
+   <addaction name="helpMenu" />
+  </widget>
+  <action name="fileNewAction" >
+   <property name="icon" >
+    <iconset>image2</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;New</string>
+   </property>
+   <property name="iconText" >
+    <string>New</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+N</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileNewAction</string>
+   </property>
+  </action>
+  <action name="fileOpenAction" >
+   <property name="icon" >
+    <iconset>image3</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Open...</string>
+   </property>
+   <property name="iconText" >
+    <string>Open</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+O</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileOpenAction</string>
+   </property>
+  </action>
+  <action name="fileSaveAction" >
+   <property name="icon" >
+    <iconset>image4</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Save</string>
+   </property>
+   <property name="iconText" >
+    <string>Save</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+S</string>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileSaveAction</string>
+   </property>
+  </action>
+  <action name="fileSaveAsAction" >
+   <property name="text" >
+    <string>Save &amp;As...</string>
+   </property>
+   <property name="iconText" >
+    <string>Save As</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileSaveAsAction</string>
+   </property>
+  </action>
+  <action name="fileExitAction" >
+   <property name="text" >
+    <string>E&amp;xit</string>
+   </property>
+   <property name="iconText" >
+    <string>Exit</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>fileExitAction</string>
+   </property>
+  </action>
+  <action name="helpContentsAction" >
+   <property name="text" >
+    <string>&amp;Contents...</string>
+   </property>
+   <property name="iconText" >
+    <string>Contents</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>helpContentsAction</string>
+   </property>
+  </action>
+  <action name="helpIndexAction" >
+   <property name="text" >
+    <string>&amp;Index...</string>
+   </property>
+   <property name="iconText" >
+    <string>Index</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>helpIndexAction</string>
+   </property>
+  </action>
+  <action name="helpAboutAction" >
+   <property name="text" >
+    <string>&amp;About</string>
+   </property>
+   <property name="iconText" >
+    <string>About</string>
+   </property>
+   <property name="shortcut" >
+    <string/>
+   </property>
+   <property name="name" stdset="0" >
+    <string>helpAboutAction</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <customwidgets>
+  <customwidget>
+   <class>Q3ToolBar</class>
+   <extends>Q3Frame</extends>
+   <header>q3listview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3MainWindow</class>
+   <extends>QWidget</extends>
+   <header>q3mainwindow.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3ListBox</class>
+   <extends>Q3Frame</extends>
+   <header>q3listbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Q3TextEdit</class>
+   <extends>Q3Frame</extends>
+   <header>q3textedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="global" >package.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>fileNewAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>fileNew()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileOpenAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>fileOpen()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>fileSave()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSaveAsAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>fileSaveAs()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileExitAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>fileExit()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpIndexAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>helpIndex()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpContentsAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>helpContents()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>helpAboutAction</sender>
+   <signal>activated()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>helpAbout()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_grade</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sGradeChanged(int)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_reportMessage</sender>
+   <signal>textChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sReportTextChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_editReportMessage</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sEditReportMessage()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_removeReport</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sRemoveReport()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_addReport</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sAddReport()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_reports</sender>
+   <signal>selectionChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sReportSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_prereqs</sender>
+   <signal>selectionChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sPrereqSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_addPrereq</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sAddPrereq()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_raisePrereq</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sRaisePrereq()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_lowerPrereq</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sLowerPrereq()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_removePrereq</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sRemovePrereq()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_editConditions</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sEditConditions()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_prereqMessage</sender>
+   <signal>textChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sPrereqTextChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_editPrereqMessage</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sEditPrereqMessage()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_providers</sender>
+   <signal>selectionChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sProviderSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_addProvider</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sAddProvider()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_editProvider</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sEditProvider()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_removeProvider</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sRemoveProvider()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_scripts</sender>
+   <signal>selectionChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sScriptSelectionChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_addScript</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sAddScript()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_raiseScript</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sRaiseScript()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_lowerScript</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sLowerScript()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_removeScript</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sRemoveScript()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_onError</sender>
+   <signal>activated(QString)</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sOnErrorActivated(QString)</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_scriptMessage</sender>
+   <signal>textChanged()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sScriptTextChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>_editScriptMessage</sender>
+   <signal>clicked()</signal>
+   <receiver>PackageWindow</receiver>
+   <slot>sEditScriptMessage()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

@@ -1,0 +1,40 @@
+function getParams()
+{
+  var params = new Object;
+  params.search = mywindow.findChild("_search").text;
+}
+
+function query()
+{
+  var params = getParams();
+
+  var qry = toolbox.executeQuery("SELECT cntct_first_name, cntct_last_name,"
+                                +"       cntct_phone, cntct_phone2 "
+                                +"  FROM cntct"
+                                +" WHERE((cntct_phone ~ <? value(\"search\") ?>)"
+                                +"    OR (cntct_phone2 ~ <? value(\"search\") ?>))", params);
+  if(!qry.first())
+  {
+    mywindow.findChild("_firstname").text = "n/a";
+    mywindow.findChild("_lastname").text = "n/a";
+    mywindow.findChild("_number").text = "n/a";
+    mywindow.findChild("_alternate").text = "n/a";
+
+    toolbox.messageBox("warning", mywindow, "No Results", "No results were found matching your criteria.");
+    return;
+  }
+
+  mywindow.findChild("_firstname").text = qry.value("cntct_first_name");
+  mywindow.findChild("_lastname").text = qry.value("cntct_last_name");
+  mywindow.findChild("_number").text = qry.value("cntct_phone");
+  mywindow.findChild("_alternate").text = qry.value("cntct_phone2");
+}
+
+function print()
+{
+  toolbox.printReport("telephonelookup", getParams());
+}
+
+mywindow.findChild("_close").clicked.connect(mywindow, "close");
+mywindow.findChild("_query").clicked.connect(query);
+mywindow.findChild("_print").clicked.connect(print);

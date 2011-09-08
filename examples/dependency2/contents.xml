@@ -1,0 +1,21 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.1"
+         id="dependencyCheck"
+         name="childpkg"
+         developer="xTuple"
+         descrip="Child package for package dependency testing">
+  <pkgnotes>
+    This is a simple test of the package dependency functionality in xTuple
+    ERP's Updater utility.
+  </pkgnotes>
+
+ <prerequisite type="dependency" name="fred" >
+  <dependson name="parentpkg" version="1.0" developer="xTuple"/>
+  <message>
+    This is a follow-on release and cannot stand alone.
+  </message>
+ </prerequisite>
+
+ <loadimage name="telephone_child" file="telephone.png"/>
+
+</package>

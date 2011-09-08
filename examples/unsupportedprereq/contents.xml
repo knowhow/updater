@@ -1,0 +1,11 @@
+<!DOCTYPE packageManagerDef>
+<package version="1.0" id="unsupportedprereqtest" >
+ <prerequisite type="Query" name="Checking PostBooks Server" >
+  <query>SELECT TRUE FROM metric WHERE metric_name = 'Application' AND metric_value='PostBooks';</query>
+  <message>This package requires that it be applied against the PostBooks Server Database.</message>
+ </prerequisite>
+ <prerequisite type="notSupported" name="are unsupported prereqs reported?" >
+  <message>This should be reported as an error.</message>
+ </prerequisite>
+
+</package>

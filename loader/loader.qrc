@@ -1,0 +1,6 @@
+
+<RCC version="1.0">
+  <qresource>
+    <file>../images/updater-32x32.png</file>
+  </qresource>
+</RCC>
