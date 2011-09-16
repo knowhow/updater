@@ -22,7 +22,6 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QTimerEvent>
-#include <QDateTime>
 
 #include <dbtools.h>
 #include <gunzip.h>
@@ -167,10 +166,10 @@ bool LoaderWindow::openFile(QString pfilename)
   contentsnames << "package.xml" << "contents.xml";
   for (int i = 0; i < contentsnames.size() && contentFile.isNull(); i++)
   {
+    QRegExp re(".*" + contentsnames.at(i) + "$");
     for(QStringList::Iterator mit = list.begin(); mit != list.end(); ++mit)
     {
-      QFileInfo fi(*mit);
-      if(fi.fileName() == contentsnames.at(i))
+      if(re.exactMatch(*mit))
       {
         if(!contentFile.isNull())
         {
@@ -263,22 +262,7 @@ bool LoaderWindow::openFile(QString pfilename)
   _pkgname->setText(tr("Package %1 (%2)").arg(_package->id()).arg(fi.filePath()));
 
   _progress->setValue(0);
-  _progress->setMaximum( _package->_privs.size()
-                       + _package->_metasqls.size()
-                       + _package->_reports.size()
-                       + _package->_appuis.size()
-                       + _package->_appscripts.size()
-                       + _package->_cmds.size()
-                       + _package->_images.size()
-                       + _package->_prerequisites.size()
-                       + _package->_initscripts.size()
-                       + _package->_scripts.size()
-                       + _package->_functions.size()
-                       + _package->_tables.size()
-                       + _package->_triggers.size()
-                       + _package->_views.size()
-                       + _package->_finalscripts.size()
-                       + 2);
+  _progress->setMaximum(_files->_list.count() - 1);
   _progress->setEnabled(true);
   if (DEBUG)
     qDebug("LoaderWindow::fileOpen() progress initialized to max %d",
@@ -469,9 +453,6 @@ bool LoaderWindow::sStart()
   _start->setEnabled(false);
   _text->setText("<p></p>");
 
-  QDateTime startTime = QDateTime::currentDateTime();
-  _text->append(tr("<p>Starting Update at %1</p>").arg(startTime.toString()));
-
   QString prefix = QString::null;
   if(!_package->id().isEmpty())
     prefix = _package->id() + "/";
@@ -558,6 +539,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     _text->append(tr("<p>Completed importing new Privileges.</p>"));
   }
@@ -656,6 +638,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     _text->append(tr("<p>Completed importing new MetaSQL Statements.</p>"));
   }
@@ -675,6 +658,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     _text->append(tr("<p>Completed importing new report definitions.</p>"));
   }
@@ -697,6 +681,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     _text->append(tr("<p>Completed importing User Interface definitions.</p>"));
   }
@@ -719,6 +704,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     _text->append(tr("<p>Completed importing Application Script definitions.</p>"));
   }
@@ -748,6 +734,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     XSqlQuery qry("SELECT updateCustomPrivs();");
     _text->append(tr("<p>Completed importing new Custom Commands.</p>"));
@@ -771,6 +758,7 @@ bool LoaderWindow::sStart()
         return false;
       else
         ignoredErrCnt += tmpReturn;
+      _progress->setValue(_progress->value() + 1);
     }
     _text->append(tr("<p>Completed importing Image definitions.</p>"));
   }
@@ -856,17 +844,6 @@ bool LoaderWindow::sStart()
   {
     qry.exec("commit;");
     _text->append(tr("<p>The Update is now complete but errors were ignored!</p>"));
-// this is currently being done in two places and it shouldn't be
-    QDateTime endTime = QDateTime::currentDateTime();
-    _text->append(tr("<p>Completed Update at %1</p>").arg(endTime.toString()));
-    int elapsed = startTime.secsTo(endTime);
-    int sec = elapsed % 60;
-    elapsed = (elapsed - sec) / 60;
-    int min = elapsed % 60;
-    elapsed = (elapsed - min) / 60;
-    int hour = elapsed;
-    _text->append(tr("<p>Total elapsed time is %1h %2m %3s</p>").arg(hour).arg(min).arg(sec));
-// end of the section being done in two places
     _progress->setValue(_progress->maximum());
   }
   else if (ignoredErrCnt > 0)
@@ -878,17 +855,6 @@ bool LoaderWindow::sStart()
   {
     qry.exec("commit;");
     _text->append(tr("<p>The Update is now complete!</p>"));
-// this is currently being done in two places and it shouldn't be
-    QDateTime endTime = QDateTime::currentDateTime();
-    _text->append(tr("<p>Completed Update at %1</p>").arg(endTime.toString()));
-    int elapsed = startTime.secsTo(endTime);
-    int sec = elapsed % 60;
-    elapsed = (elapsed - sec) / 60;
-    int min = elapsed % 60;
-    elapsed = (elapsed - min) / 60;
-    int hour = elapsed;
-    _text->append(tr("<p>Total elapsed time is %1h %2m %3s</p>").arg(hour).arg(min).arg(sec));
-// end of the section being done in two places
     _progress->setValue(_progress->maximum());
     returnValue = true;
     // Close the program if the -autoRun argument is used and the upgrade is successful.

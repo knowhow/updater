@@ -52,6 +52,3 @@ TEMPLATE = subdirs
 SUBDIRS = common \
           builder \
 	  loader
-
-CONFIG += ordered
-
