@@ -49,7 +49,7 @@
 
 #include "xsqlquery.h"
 
-#define DEBUG false
+#define DEBUG true
 
 #if defined(Q_OS_WIN32)
 #define NOCRYPT
@@ -161,6 +161,15 @@ bool LoaderWindow::openFile(QString pfilename)
 
   // find the content file
   QStringList list = _files->_list.keys();
+
+  //hernad
+  //qDebug(list);
+
+  for (int i=0; i < list.size(); i++)
+  {
+	  qDebug(  list.at(i).toLocal8Bit().constData() );
+  }
+
   QString contentFile = QString::null;
   QStringList contentsnames;
   contentsnames << "package.xml" << "contents.xml";
@@ -201,7 +210,7 @@ bool LoaderWindow::openFile(QString pfilename)
   }
   else if (! contentFile.endsWith(contentsnames.at(0)))
   {
-    qDebug("Deprecated Package Format: Packages for this version of "
+    QMessageBox::warning(this, "Deprecated Package Format: Packages for this version of "
            "the Updater should have their contents described by a file "
            "named %s. The current package being loaded uses an outdated "
            "file name %s.",
@@ -222,6 +231,11 @@ bool LoaderWindow::openFile(QString pfilename)
     delete _files;
     _files = 0;
     return false;
+
+  } else 
+  {
+	 QMessageBox::warning(this, tr("OK OK"), 
+			 tr("<p> uspjesno procitao %1").arg(contentFile)); 
   }
 
   _text->clear();

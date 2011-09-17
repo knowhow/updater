@@ -105,7 +105,7 @@ int Script::writeToDB(const QByteArray &pdata, const QString annotation, QString
            pdata.data(), qPrintable(annotation), _onError);
   if (pdata.isEmpty())
   {
-    errMsg = TR("The file %1 is empty.").arg(filename());
+    errMsg = TR("The file %1 is prazan: %2: kraj.").arg(filename(), pdata.data());
     return -1;
   }
 
